@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Home from '../pages/Home'
 import PostCreator from '../pages/PostCreator'
 import Post from '../pages/Post'
+import Admin from '../pages/Admin'
 
 const Routes = () => {
   return (
@@ -17,6 +18,9 @@ const Routes = () => {
         </Route>
         <Route exact path='/'>
           <Home />
+        </Route>
+        <Route exact path='/admin'>
+          <Admin />
         </Route>
       </Switch>
     </Router>

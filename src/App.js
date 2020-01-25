@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import logo from './logo.svg'
+import React from 'react'
 import './App.css'
-import axios from 'axios'
+import 'react-notifications/lib/notifications.css';
+
 import firebase from 'firebase'
 
 import Routes from './components/Routes'
@@ -24,10 +24,9 @@ class App extends React.Component {
     }
   }
 
-
   render() {
     return (
-      <div className='App' style={{backgroundColor: '#f2f2f2'}}>
+      <div className='App' style={{ backgroundColor: '#f2f2f2' }}>
         <Routes></Routes>
       </div>
     )
