@@ -5,6 +5,8 @@ import Truncate from 'react-truncate'
 import ClipLoader from 'react-spinners/ClipLoader'
 import { NotificationContainer, NotificationManager } from 'react-notifications'
 
+import { store } from 'react-notifications-component'
+
 import Layout from '../components/Layout'
 import NoImgAvailable from '../images/no_img_available.jpg'
 
@@ -42,10 +44,10 @@ const ListPost = (props) => {
   const [isLoading, setIsLoading] = useState(true)
   let data = []
   useEffect(() => {
-    getListPost()
+    getListPosts()
   }, [])
 
-  const getListPost = () => {
+  const getListPosts = () => {
     setIsLoading(true)
     firebase
       .database()
@@ -73,7 +75,7 @@ const ListPost = (props) => {
         <React.Fragment key={i}>
           <PostCard
             data={post}
-            updateListPosts={getListPost}
+            updateListPosts={getListPosts}
             createNotification={props.createNotification}
           ></PostCard>
           <br />
@@ -104,14 +106,38 @@ const PostCard = (props) => {
       .ref('posts/' + props.data.id)
       .remove()
       .then(() => {
-        alert('Delete successfully')
-        props.createNotification('success')
+        store.addNotification({
+          title: 'Wonderful!',
+          message: 'Xoá thành công nha bạn iu <3',
+          type: 'success',
+          insert: 'top',
+          container: 'top-right',
+          animationIn: ['animated', 'fadeIn'],
+          animationOut: ['animated', 'fadeOut'],
+          dismiss: {
+            duration: 3000,
+            onScreen: true
+          }
+        })
       })
       .catch(() => {
-        alert('Error. Try again!')
+        store.addNotification({
+          title: 'Oops!',
+          message: 'Có lỗi gì rồi ấy! Thử lại đi nha',
+          type: 'danger',
+          insert: 'top',
+          container: 'top-right',
+          animationIn: ['animated', 'fadeIn'],
+          animationOut: ['animated', 'fadeOut'],
+          dismiss: {
+            duration: 3000,
+            onScreen: true
+          }
+        })
       })
     props.updateListPosts()
   }
+
   return (
     <div
       className='row mx-1'
@@ -163,17 +189,16 @@ const PostCard = (props) => {
             className='btn bg-danger mt-1 ml-2'
             style={{ color: '#ffffff' }}
             data-toggle='modal'
-            data-target='#deletePostModal'
+            data-target={'#deletePostModal' + props.data.id}
           >
             <span className='fa fa-trash'></span> Delete
           </a>
         </div>
         <div
           className='modal fade'
-          id='deletePostModal'
+          id={'deletePostModal' + props.data.id}
           tabIndex='-1'
           role='dialog'
-          aria-labelledby='exampleModalLongTitle'
           aria-hidden='true'
         >
           <div className='modal-dialog' role='document'>

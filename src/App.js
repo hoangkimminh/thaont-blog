@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
-import 'react-notifications/lib/notifications.css';
+import 'react-notifications-component/dist/theme.css'
+import ReactNotification from 'react-notifications-component'
 
 import firebase from 'firebase'
 
@@ -28,6 +29,7 @@ class App extends React.Component {
     return (
       <div className='App' style={{ backgroundColor: '#f2f2f2' }}>
         <Routes></Routes>
+        <ReactNotification></ReactNotification>
       </div>
     )
   }
