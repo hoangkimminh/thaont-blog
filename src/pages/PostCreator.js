@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Layout from '../components/Layout'
 import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom'
 
 import PostCreatorStage from '../components/PostCreatorStage'
 const PostCreator = () => {
@@ -37,5 +37,4 @@ const PostCreator = () => {
   )
 }
 
-
-export default withRouter(PostCreator) 
+export default withRouter(PostCreator)

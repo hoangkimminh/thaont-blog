@@ -5,6 +5,7 @@ import Home from '../pages/Home'
 import PostCreator from '../pages/PostCreator'
 import Post from '../pages/Post'
 import Admin from '../pages/Admin'
+import PostEditor from '../pages/PostEditor'
 
 const Routes = () => {
   return (
@@ -21,6 +22,9 @@ const Routes = () => {
         </Route>
         <Route exact path='/admin'>
           <Admin />
+        </Route>
+        <Route exact path='/admin/edit/:id'>
+          <PostEditor />
         </Route>
       </Switch>
     </Router>

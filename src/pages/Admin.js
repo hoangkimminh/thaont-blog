@@ -180,7 +180,7 @@ const PostCard = (props) => {
               <span className='fa fa-eye'></span> View
             </a>
           </Link>
-          <Link to={'/posts/edit/' + props.data.id}>
+          <Link to={'/admin/edit/' + props.data.id}>
             <a className='btn bg-primary mt-1 ml-2' style={{ color: '#ffffff' }}>
               <span className='fa fa-edit'></span> Edit
             </a>
