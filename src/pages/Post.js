@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'
 import Layout from '../components/Layout'
 import './Post.css'
 import NoImgAvailable from '../images/no_img_available.jpg'
+import colors from '../utils/colors'
 
 const Post = () => {
   let { id } = useParams()
@@ -38,6 +39,11 @@ const Post = () => {
         })
         setIsLoading(false)
       })
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
   }, [])
 
   return (
@@ -45,7 +51,7 @@ const Post = () => {
       <div
         className='container mt-3'
         style={{
-          borderRadius: '15px',
+          borderRadius: '5px',
           backgroundColor: '#ffffff',
           padding: '2rem',
           boxShadow: '0px 3px 15px rgba(0,0,0,0.2)'
@@ -53,19 +59,19 @@ const Post = () => {
       >
         {isLoading && (
           <div className='text-center'>
-            <ClipLoader color='#2F4F4F'></ClipLoader>
+            <ClipLoader color={colors.title_warm}></ClipLoader>
           </div>
         )}
         {!isLoading && (
           <React.Fragment>
             <span
-              className='post-category text-uppercase font-weight-bold font-italic'
-              style={{ color: '#2F4F4F' }}
+              className='post-category font-weight-bold font-italic'
+              style={{ color: colors.title_warm }}
             >
               {state.category}
             </span>
             <h1 className='post-title font-weight-bold'>{state.title}</h1>
-            <span className='post-category text-uppercase text-muted font-italic'>
+            <span className='post-createAt text-uppercase text-muted font-italic'>
               {state.createAt}
             </span>
             {parse(state.content)}
@@ -94,6 +100,7 @@ const RecentPost = () => {
             id: childSnap.key,
             title: childData.title,
             imgURL: childData.imgURL,
+            category: childData.category,
             textContent: childData.textContent,
             createAt: childData.createAt
           })
@@ -121,7 +128,7 @@ const PostCard = (props) => {
     <div
       className='col-md-3 col-sm-6 mx-1 mt-1'
       style={{
-        borderRadius: '15px',
+        borderRadius: '5px',
         backgroundColor: '#ffffff',
         padding: '1rem',
         boxShadow: '0px 3px 15px rgba(0,0,0,0.2)'
@@ -135,16 +142,16 @@ const PostCard = (props) => {
             alt='My avatar'
             style={{
               borderColor: '#ffffff',
-              borderRadius: '15px'
+              borderRadius: '5px'
             }}
           />
         </div>
         <div className='col-md-12 col-6 px-md-3 py-2 p-sm-2'>
-          <span className='text-uppercase font-weight-bold font-italic'>
+          <span className='font-weight-bold font-italic'>
             {props.data.category}
           </span>
           <Link to={'/posts/' + props.data.id}>
-            <h3 className='font-weight-bold mt-1' style={{ color: '#2F4F4F' }}>
+            <h3 className='font-weight-bold mt-1' style={{ color: colors.title_warm }}>
               {props.data.title}
             </h3>
           </Link>

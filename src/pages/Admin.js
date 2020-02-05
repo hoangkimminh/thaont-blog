@@ -142,7 +142,7 @@ const PostCard = (props) => {
     <div
       className='row mx-1'
       style={{
-        borderRadius: '15px',
+        borderRadius: '10px',
         backgroundColor: '#ffffff',
         boxShadow: '0px 3px 15px rgba(0,0,0,0.2)'
       }}
@@ -154,7 +154,7 @@ const PostCard = (props) => {
           alt='My avatar'
           style={{
             borderColor: '#ffffff',
-            borderRadius: '15px'
+            borderRadius: '10px'
           }}
         />
       </div>

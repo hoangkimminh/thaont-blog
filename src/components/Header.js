@@ -1,11 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import colors from '../utils/colors'
+
 const Header = () => {
   return (
     <nav
       className='navbar navbar-expand-lg navbar-dark static-top'
-      style={{ backgroundColor: '#2F4F4F' }}
+      style={{ backgroundColor: colors.background_peach, color: colors.title_warm }}
     >
       <div className='container'>
         <Link to='/'>
@@ -33,11 +35,6 @@ const Header = () => {
                   <span className='sr-only'>(current)</span>
                 </a>
               </Link>
-            </li>
-            <li className='nav-item'>
-              <a className='nav-link' href='#'>
-                Blog
-              </a>
             </li>
             <li className='nav-item'>
               <a className='nav-link' href='#'>

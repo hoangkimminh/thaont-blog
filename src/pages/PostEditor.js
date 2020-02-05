@@ -50,7 +50,7 @@ const PostEditorStage = (props) => {
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState('')
   const [imgURL, setImgURL] = useState('')
-const [createAt, setCreateAt] = useState('')
+  const [createAt, setCreateAt] = useState('')
   useEffect(() => {
     fetchPostData()
   }, [])
@@ -106,7 +106,7 @@ const [createAt, setCreateAt] = useState('')
         .getPlainText()
         .replace('\n', '.'),
       createAt: createAt
-      }
+    }
 
     firebase
       .database()

@@ -7,6 +7,7 @@ import Image1 from '../images/img1.jpg'
 import Image2 from '../images/img2.jpg'
 import Image3 from '../images/img3.jpg'
 import NoImgAvailable from '../images/no_img_available.jpg'
+import colors from '../utils/colors'
 
 import firebase from 'firebase'
 import ClipLoader from 'react-spinners/ClipLoader'
@@ -22,7 +23,6 @@ const Home = () => {
           LITTLE CORNER OF MINE
         </div>
         <Carousel></Carousel>
-        <hr />
         <ListPost></ListPost>
       </div>
     </Layout>
@@ -72,6 +72,7 @@ const Carousel = () => {
           <span className='sr-only'>Next</span>
         </a>
       </div>
+      <hr />
     </div>
   )
 }
@@ -90,6 +91,7 @@ const ListPost = () => {
           data.push({
             id: childSnap.key,
             title: childData.title,
+            category: childData.category,
             imgURL: childData.imgURL,
             textContent: childData.textContent,
             createAt: childData.createAt
@@ -115,6 +117,7 @@ const ListPost = () => {
   return (
     <div className='container'>
       <h4 className='pl-2 font-weight-bold'>All posts</h4>
+      <br />
       <div className='d-flex justify-content-center'>
         {!isLoading && <div>{listPostCard}</div>}
         {isLoading && (
@@ -132,7 +135,7 @@ const PostCard = (props) => {
     <div
       className='row mx-1'
       style={{
-        borderRadius: '15px',
+        borderRadius: '5px',
         backgroundColor: '#ffffff',
         boxShadow: '0px 3px 15px rgba(0,0,0,0.2)'
       }}
@@ -144,15 +147,15 @@ const PostCard = (props) => {
           alt='My avatar'
           style={{
             borderColor: '#ffffff',
-            borderRadius: '15px'
+            borderRadius: '5px'
           }}
         />
       </div>
       <div className='col-md-8 col-sm-12 px-md-5 py-4'>
-        <span className='text-uppercase font-weight-bold font-italic'>
+        <span className='font-weight-bold font-italic'>
           {props.data.category}
         </span>
-        <h3 className='font-weight-bold mt-1' style={{ color: '#2F4F4F' }}>
+        <h3 className='font-weight-bold mt-1' style={{ color: colors.title_warm }}>
           {props.data.title}
         </h3>
         <span className='text-muted font-italic'>{props.data.createAt}</span>
@@ -164,7 +167,7 @@ const PostCard = (props) => {
         <Link to={'/posts/' + props.data.id}>
           <a
             className='btn mt-1'
-            style={{ backgroundColor: '#2F4F4F', color: '#ffffff' }}
+            style={{ backgroundColor: colors.title_warm, color: '#ffffff' }}
           >
             Read more...
           </a>
