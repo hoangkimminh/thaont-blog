@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom'
 import { store } from 'react-notifications-component'
 
 import Layout from '../components/Layout'
+import { getCurrentTime } from '../utils'
 
 const PostCreatorStage = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
@@ -36,13 +37,6 @@ const PostCreatorStage = () => {
   }
 
   const onSubmitPost = () => {
-    var date = new Date().getDate() //Current Date
-    var month = new Date().getMonth() + 1 //Current Month
-    var year = new Date().getFullYear() //Current Year
-    var hours = new Date().getHours() //Current Hours
-    var min = new Date().getMinutes() //Current Minutes
-    var sec = new Date().getSeconds() //Current Seconds
-
     const post = {
       title: title,
       category: category,
@@ -52,7 +46,7 @@ const PostCreatorStage = () => {
         .getCurrentContent()
         .getPlainText()
         .replace('\n', '.'),
-      createAt: date + '/' + month + '/' + year + ' ' + hours + ':' + min + ':' + sec
+      createAt: getCurrentTime()
     }
 
     firebase
