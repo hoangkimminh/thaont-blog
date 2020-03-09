@@ -5,7 +5,7 @@ import ReactNotification from 'react-notifications-component'
 
 import firebase from 'firebase'
 
-import Routes from './components/Routes'
+import Routes from './components/routes/Routes'
 
 class App extends React.Component {
   constructor(props) {

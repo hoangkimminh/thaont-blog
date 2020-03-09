@@ -1,24 +1,47 @@
-import React, { useState } from 'react'
-import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-import { EditorState, convertToRaw } from 'draft-js'
+import React, { useState, useEffect } from 'react'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import { EditorState, ContentState, convertToRaw } from 'draft-js'
 import { Editor } from 'react-draft-wysiwyg'
 import draftToHtml from 'draftjs-to-html'
 import firebase from 'firebase'
-import { withRouter } from 'react-router-dom'
+import htmlToDraft from 'html-to-draftjs'
 import { store } from 'react-notifications-component'
 
-import Layout from '../components/Layout'
-import { getCurrentTime } from '../utils'
-
-const PostCreatorStage = () => {
+import Layout from '../../components/layouts/Layout'
+const PostEditorStage = (props) => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty())
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState('')
   const [imgURL, setImgURL] = useState('')
+  const [createAt, setCreateAt] = useState('')
+  const [comments, setComments] = useState({})
+  useEffect(() => {
+    fetchPostData()
+  }, [])
+
+  const fetchPostData = async () => {
+    firebase
+      .database()
+      .ref('posts/')
+      .child(props.id)
+      .on('value', (snapshot) => {
+        const postData = snapshot.toJSON()
+        setTitle(postData.title)
+        setCategory(postData.category)
+        setImgURL(postData.imgURL)
+        setCreateAt(postData.createAt)
+        setComments(postData.comments)
+        //Text content to HTML
+        const content = postData.content
+        const blocksFromHtml = htmlToDraft(content)
+        const { contentBlocks, entityMap } = blocksFromHtml
+        const contentState = ContentState.createFromBlockArray(contentBlocks, entityMap)
+        setEditorState(EditorState.createWithContent(contentState))
+      })
+  }
 
   const onEditorStateChange = (editorState) => {
     setEditorState(editorState)
-    console.log(draftToHtml(convertToRaw(editorState.getCurrentContent())))
   }
 
   const onChangeTitle = (event) => {
@@ -46,17 +69,18 @@ const PostCreatorStage = () => {
         .getCurrentContent()
         .getPlainText()
         .replace('\n', '.'),
-      createAt: getCurrentTime()
+      createAt: createAt,
+      comments: comments
     }
 
     firebase
       .database()
-      .ref('posts/')
-      .push(post)
+      .ref('posts/' + props.id)
+      .set(post)
       .then(async () => {
         await store.addNotification({
           title: 'Wonderful!',
-          message: 'Ố là la! Tạo thành công nha bạn iu <3',
+          message: 'Hihi! Update thành công nha <3',
           type: 'success',
           insert: 'top',
           container: 'top-right',
@@ -92,15 +116,30 @@ const PostCreatorStage = () => {
         <form>
           <div className='form-group'>
             <label className='font-weight-bold'>Title</label>
-            <input type='text' className='form-control' onChange={onChangeTitle} />
+            <input
+              type='text'
+              defaultValue={title}
+              className='form-control'
+              onChange={onChangeTitle}
+            />
           </div>
           <div className='form-group'>
             <label className='font-weight-bold'>Category</label>
-            <input type='text' className='form-control' onChange={onChangeCategory} />
+            <input
+              type='text'
+              defaultValue={category}
+              className='form-control'
+              onChange={onChangeCategory}
+            />
           </div>
           <div className='form-group'>
             <label className='font-weight-bold'>URL of corresponding picture</label>
-            <input type='url' className='form-control' onChange={onChangeImgURL} />
+            <input
+              type='url'
+              defaultValue={imgURL}
+              className='form-control'
+              onChange={onChangeImgURL}
+            />
           </div>
           <label className='font-weight-bold'>Content</label>
           <div className='border'>
@@ -161,4 +200,4 @@ const PostCreatorStage = () => {
   )
 }
 
-export default withRouter(PostCreatorStage)
+export default PostEditorStage

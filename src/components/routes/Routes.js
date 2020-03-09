@@ -1,11 +1,11 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
-import Home from '../pages/Home'
-import PostCreator from '../pages/PostCreator'
-import Post from '../pages/Post'
-import Admin from '../pages/Admin'
-import PostEditor from '../pages/PostEditor'
+import Home from '../../pages/Home'
+import PostCreator from '../../pages/PostCreator'
+import Post from '../../pages/Post'
+import Admin from '../../pages/Admin'
+import PostEditor from '../../pages/PostEditor'
 
 const Routes = () => {
   return (

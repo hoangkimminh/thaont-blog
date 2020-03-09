@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import Layout from '../components/Layout'
-import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import Layout from '../components/layouts/Layout'
+// import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import { withRouter } from 'react-router-dom'
 
-import PostCreatorStage from '../components/PostCreatorStage'
+import PostCreatorStage from '../components/post-creator/PostCreatorStage'
 const PostCreator = () => {
   const [password, setPassword] = useState('')
   const [isAdmin, setIsAdmin] = useState(true)

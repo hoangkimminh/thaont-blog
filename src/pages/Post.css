@@ -5,8 +5,8 @@ img {
     max-width: 100%;
     height: auto;
 }
-/* 
-a,
+
 a:hover {
-    color: #df744a;
-} */
+    color: #2F4F4F;
+    text-decoration: none;
+}
