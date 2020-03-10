@@ -14,14 +14,9 @@ const Routes = () => {
         <Route exact path='/create-post'>
           <PostCreator />
         </Route>
-        <Route path='/posts'>
+        <Route exact path='/posts/:id'>
           <Post />
         </Route>
-        <Switch>
-          <Route exact path='/posts/:id'>
-            <Post />
-          </Route>
-        </Switch>
         <Route exact path='/'>
           <Home />
         </Route>

@@ -1,16 +1,14 @@
 import React from 'react'
 import Truncate from 'react-truncate'
 import { Link } from 'react-router-dom'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import NoImgAvailable from '../../images/no_img_available.jpg'
 import colors from '../../utils/colors'
-import Post from '../../pages/Post'
 
 const PostCard = (props) => {
   return (
     <div
-      className='col-md col-sm-6 mt-1 mx-1'
+      className='col-md col-sm-6 mt-1 mr-1'
       style={{
         borderRadius: '5px',
         backgroundColor: '#ffffff',
