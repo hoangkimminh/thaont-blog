@@ -45,7 +45,7 @@ const Comments = (props) => {
             createdAt: childData.createdAt
           })
         })
-        setListComment(commentsData)
+        setListComment(commentsData.reverse())
       })
   }
 
@@ -93,7 +93,7 @@ const Comments = (props) => {
   }
 
   return (
-    <div className='container mt-2'>
+    <div className='container my-2'>
       <h3>Comments</h3>
 
       <div

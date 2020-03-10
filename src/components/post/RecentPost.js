@@ -25,7 +25,7 @@ const RecentPost = () => {
             createAt: childData.createAt
           })
         })
-        setRecentPosts(data)
+        setRecentPosts(data.reverse())
       })
   }, [])
 
@@ -36,7 +36,7 @@ const RecentPost = () => {
     })
 
   return (
-    <div className='container mt-2'>
+    <div className='container my-2'>
       <h3>Recent posts</h3>
       <div className='row mt-3 mx-1 d-flex justify-content-start'>{listPostCard}</div>
     </div>
