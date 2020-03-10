@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import parse from 'html-react-parser'
 import firebase from 'firebase'
-import { useParams } from 'react-router-dom'
 import ClipLoader from 'react-spinners/ClipLoader'
 
 import colors from '../../utils/colors'
 
-const PostContent = () => {
-  const { id } = useParams()
+const PostContent = (props) => {
+  const { id } = props
   const [state, setState] = useState({
     id: id,
     title: '',
@@ -38,7 +37,7 @@ const PostContent = () => {
       left: 0,
       behavior: 'smooth'
     })
-  }, [])
+  }, [id])
 
   return (
     <div className='container post-content'>

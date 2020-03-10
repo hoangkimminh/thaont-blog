@@ -18,7 +18,7 @@ const Comments = (props) => {
 
   useEffect(() => {
     getListComment()
-  }, [])
+  }, [postId])
 
   const getListComment = () => {
     const commentsData = []

@@ -1,21 +1,24 @@
 import React from 'react'
-import { useParams, withRouter } from 'react-router-dom'
+import { useRouteMatch } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 import Layout from '../components/layouts/Layout'
 import './Post.css'
-import PostContent from '../components/post/PostContent'
 import RecentPost from '../components/post/RecentPost'
-import Comments from '../components/post/Comments'
+import PostView from '../components/post/PostView'
 
 const Post = () => {
-  const { id } = useParams()
+  const { path } = useRouteMatch()
   return (
     <Layout>
-      <PostContent />
-      <Comments postId={id} />
+      <Switch>
+        <Route exact path={path + '/:id'}>
+          <PostView />
+        </Route>
+      </Switch>
       <RecentPost />
     </Layout>
   )
 }
 
-export default withRouter(Post)
+export default Post
