@@ -24,7 +24,7 @@ const ListPost = () => {
             createAt: childData.createAt
           })
         })
-        setListPost(data)
+        setListPost(data.reverse())
         setIsLoading(false)
       })
   }, [])
