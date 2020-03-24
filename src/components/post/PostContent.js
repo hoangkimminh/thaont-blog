@@ -23,9 +23,9 @@ const PostContent = (props) => {
       .database()
       .ref('posts/')
       .child(id)
-      .on('value', (snapshot) => {
+      .on('value', async (snapshot) => {
         const postData = snapshot.toJSON()
-        setState({
+        await setState({
           title: postData.title,
           category: postData.category,
           content: postData.content,

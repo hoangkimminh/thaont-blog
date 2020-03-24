@@ -30,7 +30,7 @@ const PostCard = (props) => {
         </div>
         <div className='col-md-12 col-6 px-md-3 py-2 p-sm-2'>
           <span className='font-weight-bold font-italic'>{props.data.category}</span>
-          <Link to={'/posts/' + props.data.id}>
+          <Link to={'/posts/' + props.data.title + '/' + props.data.id}>
             <h3 className='font-weight-bold mt-1' style={{ color: colors.title_warm }}>
               {props.data.title}
             </h3>

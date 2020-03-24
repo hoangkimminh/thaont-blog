@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { withRouter, useParams } from 'react-router-dom'
 
 import Layout from '../components/layouts/Layout'
@@ -10,6 +10,10 @@ const PostEditor = () => {
   const [isAdmin, setIsAdmin] = useState(true)
 
   const onCheckIsAdmin = () => {}
+
+  useEffect(() => {
+    document.title = 'Create a new post'
+  })
 
   return isAdmin ? (
     <PostEditorStage id={id}></PostEditorStage>

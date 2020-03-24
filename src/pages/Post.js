@@ -6,12 +6,16 @@ import './Post.css'
 import PostContent from '../components/post/PostContent'
 import RecentPost from '../components/post/RecentPost'
 import Comments from '../components/post/Comments'
+import { useEffect } from 'react'
 
 const Post = () => {
-  const { id } = useParams()
+  const { id, title } = useParams()
+  useEffect(() => {
+    document.title = title
+  }, [title])
   return (
     <Layout>
-      <PostContent id={id}/>
+      <PostContent id={id} />
       <Comments postId={id} />
       <RecentPost />
     </Layout>

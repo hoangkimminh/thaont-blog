@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NotificationContainer, NotificationManager } from 'react-notifications'
 
 import Layout from '../components/layouts/Layout'
 import ListPost from '../components/admin/ListPost'
 
 const Admin = () => {
+  useEffect(() => {
+    document.title = 'Admin'
+  })
+
   const createNotification = (type) => {
     return () => {
       switch (type) {

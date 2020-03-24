@@ -2,8 +2,13 @@ import React from 'react'
 import Layout from '../components/layouts/Layout'
 import ListPost from '../components/home/ListPost'
 import Carousel from '../components/home/Carousel'
+import { useEffect } from 'react'
 
 const Home = () => {
+  useEffect(() => {
+    document.title = 'Little corner of mine'
+  })
+  
   return (
     <Layout>
       <div>

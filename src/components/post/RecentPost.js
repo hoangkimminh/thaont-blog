@@ -38,7 +38,7 @@ const RecentPost = () => {
   return (
     <div className='container my-2'>
       <h3>Recent posts</h3>
-      <div className='row mt-3 mx-1 d-flex justify-content-start'>{listPostCard}</div>
+      <div className='row mt-3 mx-2 d-flex justify-content-start'>{listPostCard}</div>
     </div>
   )
 }

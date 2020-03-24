@@ -5,11 +5,16 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import { withRouter } from 'react-router-dom'
 
 import PostCreatorStage from '../components/post-creator/PostCreatorStage'
+import { useEffect } from 'react'
 const PostCreator = () => {
   const [password, setPassword] = useState('')
   const [isAdmin, setIsAdmin] = useState(true)
 
   const onCheckIsAdmin = () => {}
+
+  useEffect(() => {
+    document.title = 'Create a new post'
+  })
 
   return isAdmin ? (
     <PostCreatorStage></PostCreatorStage>

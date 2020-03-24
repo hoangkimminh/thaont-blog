@@ -36,7 +36,7 @@ const PostCard = (props) => {
             {props.data.textContent}
           </Truncate>
         </div>
-        <Link to={'/posts/' + props.data.id}>
+        <Link to={'/posts/' + props.data.title + '/' + props.data.id}>
           <a
             className='btn mt-1'
             style={{ backgroundColor: colors.title_warm, color: '#ffffff' }}
