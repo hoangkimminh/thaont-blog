@@ -8,7 +8,7 @@ import colors from '../../utils/colors'
 const PostCard = (props) => {
   return (
     <div
-      className='col-md col-sm-6 mt-1 mr-1'
+      className='col-md col-sm-6 mt-2 mr-2'
       style={{
         borderRadius: '5px',
         backgroundColor: '#ffffff',
@@ -20,8 +20,8 @@ const PostCard = (props) => {
         <div className='col-md-12 col-6 d-flex'>
           <img
             src={props.data.imgURL !== '' ? props.data.imgURL : NoImgAvailable}
-            className='img-thumbnail'
-            alt='My avatar'
+            // className='img-thumbnail'
+            alt='Image'
             style={{
               borderColor: '#ffffff',
               borderRadius: '5px'
