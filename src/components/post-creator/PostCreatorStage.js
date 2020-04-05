@@ -44,8 +44,9 @@ const PostCreatorStage = () => {
       textContent: editorState
         .getCurrentContent()
         .getPlainText()
-        .replace('\n', '.'),
-      createAt: getCurrentTime()
+        .replace('\n', '.')
+        .replace(/\s\s+/g, ' '),
+      createAt: getCurrentTime(),
     }
 
     firebase
@@ -63,8 +64,8 @@ const PostCreatorStage = () => {
           animationOut: ['animated', 'fadeOut'],
           dismiss: {
             duration: 2000,
-            onScreen: true
-          }
+            onScreen: true,
+          },
         })
         window.location.href = '/'
       })
@@ -79,8 +80,8 @@ const PostCreatorStage = () => {
           animationOut: ['animated', 'fadeOut'],
           dismiss: {
             duration: 3000,
-            onScreen: true
-          }
+            onScreen: true,
+          },
         })
       })
   }

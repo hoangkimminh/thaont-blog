@@ -8,16 +8,16 @@ const Home = () => {
   useEffect(() => {
     document.title = 'Little corner of mine'
   })
-
+  
   return (
     <Layout>
       <div>
-        <h1
+        <div
           className='d-flex justify-content-center align-items-center font-weight-bold text-center'
-          style={{ height: '150px' }}
+          style={{ height: '150px', fontSize: '3em' }}
         >
           LITTLE CORNER OF MINE
-        </h1>
+        </div>
         <Carousel></Carousel>
         <ListPost></ListPost>
       </div>

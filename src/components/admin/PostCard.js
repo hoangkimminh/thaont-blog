@@ -58,7 +58,7 @@ const PostCard = (props) => {
         <img
           src={props.data.imgURL !== '' ? props.data.imgURL : NoImgAvailable}
           className='img-thumbnail'
-          alt='Image'
+          alt='My avatar'
           style={{
             borderColor: '#ffffff',
             borderRadius: '10px'

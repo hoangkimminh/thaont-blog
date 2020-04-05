@@ -65,12 +65,9 @@ const PostEditorStage = (props) => {
       category: category,
       imgURL: imgURL,
       content: draftToHtml(convertToRaw(editorState.getCurrentContent())),
-      textContent: editorState
-        .getCurrentContent()
-        .getPlainText()
-        .replace('\n', '.'),
+      textContent: editorState.getCurrentContent().getPlainText().replace('\n', '.').replace(/\s\s+/g, ' '),
       createAt: createAt,
-      comments: comments
+      comments: comments ? comments : {},
     }
 
     firebase
@@ -88,8 +85,8 @@ const PostEditorStage = (props) => {
           animationOut: ['animated', 'fadeOut'],
           dismiss: {
             duration: 2000,
-            onScreen: true
-          }
+            onScreen: true,
+          },
         })
         window.location.href = '/'
       })
@@ -104,8 +101,8 @@ const PostEditorStage = (props) => {
           animationOut: ['animated', 'fadeOut'],
           dismiss: {
             duration: 3000,
-            onScreen: true
-          }
+            onScreen: true,
+          },
         })
       })
   }

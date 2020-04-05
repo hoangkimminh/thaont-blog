@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import ClipLoader from 'react-spinners/ClipLoader'
 
 import colors from '../../utils/colors'
+import { addPageInfo } from '../../utils'
 
 const PostContent = (props) => {
   const { id } = props
@@ -13,7 +14,9 @@ const PostContent = (props) => {
     title: '',
     category: '',
     content: '',
-    createAt: ''
+    createAt: '',
+    imgURL: '',
+    textContent: '',
   })
 
   const [isLoading, setIsLoading] = useState(true)
@@ -29,14 +32,24 @@ const PostContent = (props) => {
           title: postData.title,
           category: postData.category,
           content: postData.content,
-          createAt: postData.createAt
+          createAt: postData.createAt,
+          imgURL: postData.imgURL,
+          textContent: postData.textContent,
+        })
+        addPageInfo({
+          title: postData.title,
+          image: postData.imgURL,
+          description: postData.textContent
+            .replace(/\s\s+/g, ' ')
+            .replace('\n', '. ')
+            .substr(2, 150),
         })
         setIsLoading(false)
       })
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     })
   }, [id])
 
@@ -48,7 +61,7 @@ const PostContent = (props) => {
           borderRadius: '5px',
           backgroundColor: '#ffffff',
           padding: '2rem',
-          boxShadow: '0px 3px 15px rgba(0,0,0,0.2)'
+          boxShadow: '0px 3px 15px rgba(0,0,0,0.2)',
         }}
       >
         {isLoading && (

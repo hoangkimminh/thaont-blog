@@ -13,6 +13,7 @@ const Post = () => {
   useEffect(() => {
     document.title = title
   }, [title])
+  
   return (
     <Layout>
       <PostContent id={id} />

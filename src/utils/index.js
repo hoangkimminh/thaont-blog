@@ -8,4 +8,18 @@ const getCurrentTime = () => {
   return date + '/' + month + '/' + year + ' ' + hours + ':' + min + ':' + sec
 }
 
-export { getCurrentTime }
+const addMetaTag = (name, content) => {
+  let link = document.createElement('meta')
+  link.setAttribute('property', 'og:' + name)
+  link.content = content
+  document.getElementsByTagName('head')[0].appendChild(link)
+}
+
+const addPageInfo = (info) => {
+  document.title = info.title
+  addMetaTag('title', info.title)
+  addMetaTag('image', info.image)
+  addMetaTag('description', info.description)
+}
+
+export { getCurrentTime, addPageInfo }

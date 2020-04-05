@@ -1,7 +1,6 @@
 import React from 'react'
 import Truncate from 'react-truncate'
 import { Link } from 'react-router-dom'
-
 import NoImgAvailable from '../../images/no_img_available.jpg'
 import colors from '../../utils/colors'
 
@@ -18,8 +17,8 @@ const PostCard = (props) => {
       <div className='col-md-4 col-sm-12 p-2 d-flex justify-content-center'>
         <img
           src={props.data.imgURL !== '' ? props.data.imgURL : NoImgAvailable}
-          // className='img-thumbnail'
-          alt='Image'
+          className='img-thumbnail'
+          alt='My avatar'
           style={{
             borderColor: '#ffffff',
             borderRadius: '5px'
@@ -33,7 +32,7 @@ const PostCard = (props) => {
         </h3>
         <span className='text-muted font-italic'>{props.data.createAt}</span>
         <div className='mt-1'>
-          <Truncate lines={3} ellipsis={<span>...</span>}>
+          <Truncate lines={4} ellipsis={<span>...</span>}>
             {props.data.textContent}
           </Truncate>
         </div>
