@@ -36,14 +36,6 @@ const PostContent = (props) => {
           imgURL: postData.imgURL,
           textContent: postData.textContent,
         })
-        addPageInfo({
-          title: postData.title,
-          image: postData.imgURL,
-          description: postData.textContent
-            .replace(/\s\s+/g, ' ')
-            .replace('\n', '. ')
-            .substr(2, 150),
-        })
         setIsLoading(false)
       })
     window.scrollTo({

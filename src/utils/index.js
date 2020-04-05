@@ -17,6 +17,8 @@ const addMetaTag = (name, content) => {
 
 const addPageInfo = (info) => {
   document.title = info.title
+  addMetaTag('type', info.type)
+  addMetaTag('url', info.url)
   addMetaTag('title', info.title)
   addMetaTag('image', info.image)
   addMetaTag('description', info.description)
