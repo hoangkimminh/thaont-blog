@@ -11,7 +11,7 @@ const PostCard = (props) => {
       style={{
         borderRadius: '5px',
         backgroundColor: '#ffffff',
-        boxShadow: '0px 3px 15px rgba(0,0,0,0.2)'
+        boxShadow: '0px 3px 15px rgba(0,0,0,0.2)',
       }}
     >
       <div className='col-md-4 col-sm-12 p-2 d-flex justify-content-center'>
@@ -21,7 +21,7 @@ const PostCard = (props) => {
           alt='My avatar'
           style={{
             borderColor: '#ffffff',
-            borderRadius: '5px'
+            borderRadius: '5px',
           }}
         />
       </div>
@@ -36,7 +36,7 @@ const PostCard = (props) => {
             {props.data.textContent}
           </Truncate>
         </div>
-        <Link to={'/posts/' + props.data.title + '/' + props.data.id}>
+        <Link to={'/posts/' + props.data.title.replace(' ', '-') + '/' + props.data.id}>
           <a
             className='btn mt-1'
             style={{ backgroundColor: colors.title_warm, color: '#ffffff' }}

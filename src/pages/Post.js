@@ -39,7 +39,7 @@ const Post = () => {
           imgURL: postData.imgURL,
           textContent: postData.textContent,
         })
-        addPageInfo({
+        await addPageInfo({
           title: postData.title,
           image: postData.imgURL,
           description: postData.textContent

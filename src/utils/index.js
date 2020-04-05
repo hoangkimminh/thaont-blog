@@ -8,14 +8,19 @@ const getCurrentTime = () => {
   return date + '/' + month + '/' + year + ' ' + hours + ':' + min + ':' + sec
 }
 
-const addMetaTag = (name, content) => {
-  let link = document.createElement('meta')
-  link.setAttribute('property', 'og:' + name)
-  link.content = content
-  document.getElementsByTagName('head')[0].appendChild(link)
+const addMetaTag = async (name, content) => {
+  console.log('add')
+  let metas = document.getElementsByTagName('meta')
+  for (let i = 0; i < metas.length; i++) {
+    const oldContent = 'og:' + name
+    if (metas[i].getAttribute('property') == oldContent) {
+      metas[i].setAttribute('content', content)
+    }
+  }
 }
 
-const addPageInfo = (info) => {
+const addPageInfo = async (info) => {
+  console.log('add')
   document.title = info.title
   addMetaTag('type', info.type)
   addMetaTag('url', info.url)

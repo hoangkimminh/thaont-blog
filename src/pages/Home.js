@@ -3,12 +3,20 @@ import Layout from '../components/layouts/Layout'
 import ListPost from '../components/home/ListPost'
 import Carousel from '../components/home/Carousel'
 import { useEffect } from 'react'
+import { addPageInfo } from '../utils'
 
 const Home = () => {
   useEffect(() => {
     document.title = 'Little corner of mine'
+    addPageInfo({
+      title: 'Little corner of mine',
+      description: 'Góc nhỏ nơi cất những chia sẻ của Thảo',
+      image: 'https://thaont-blog.now.sh/static/media/img1.60ae67dd.jpg',
+      type: 'article',
+      url: window.location.href,
+    })
   })
-  
+
   return (
     <Layout>
       <div>
